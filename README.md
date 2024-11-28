@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 =======
 # UnityEditor_ProjeKurulumAraci
@@ -20,4 +19,4 @@ Proje içerisinde Window -> Araclar -> Proje Kurulum menüsünü kullanarak arac
 
 # SourceOfInspiration
 I should thank to "Youtube : Indie-Pixel" for their tutorial videos.
->>>>>>> 6eaa0872f03f601f309421f28d6f2b0e8af4fc27
+>>>>>>> 
