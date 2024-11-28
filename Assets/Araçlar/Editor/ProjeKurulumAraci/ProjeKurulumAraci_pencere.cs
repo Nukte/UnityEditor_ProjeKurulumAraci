@@ -15,15 +15,15 @@ namespace Araclar
 
         private string projectName = "test";
 
-        // Oyun türüne göre seçilen klasörler
+        // Oyun tÃ¼rÃ¼ne gÃ¶re seÃ§ilen klasÃ¶rler
         private bool createArtFolder = true;
         private bool createCodeFolder = true;
         private bool createResourcesFolder = true;
         private bool createPrefabsFolder = true;
         private bool createScenesFolder = true;
 
-        // Oyun türü seçimi
-        private int selectedGameTypeIndex = 0;  // Değişkeni int olarak tanımladık
+        // Oyun tÃ¼rÃ¼ seÃ§imi
+        private int selectedGameTypeIndex = 0;
         private string[] gameTypes = { "Platformer", "FPS", "RPG", "None" };
         #endregion
 
@@ -38,29 +38,29 @@ namespace Araclar
         {
             EditorGUILayout.BeginVertical();
 
-            // Proje adı girişi
+            // Proje adi girisi
             EditorGUILayout.BeginHorizontal();
-            projectName = EditorGUILayout.TextField("Projenizin İsmi", projectName);
+            projectName = EditorGUILayout.TextField("Projenizin Ãsmi", projectName);
             EditorGUILayout.EndHorizontal();
 
-            // Oyun türünü seç
+            // Oyun tÃ¼rÃ¼nÃ¼ seÃ§
             EditorGUILayout.BeginHorizontal();
-            selectedGameTypeIndex = EditorGUILayout.Popup("Oyun Türünü Seç", selectedGameTypeIndex, gameTypes);
+            selectedGameTypeIndex = EditorGUILayout.Popup("Oyun TÃ¼rÃ¼nÃ¼ SeÃ§", selectedGameTypeIndex, gameTypes);
             EditorGUILayout.EndHorizontal();
 
-            // Seçilen oyun türüne göre klasör seçeneklerini göster
-            string selectedGameType = gameTypes[selectedGameTypeIndex]; // Oyun türünü string olarak alıyoruz
+            // SeÃ§ilen oyun tÃ¼rÃ¼ne gÃ¶re klasÃ¶r seÃ§eneklerini gÃ¶ster
+            string selectedGameType = gameTypes[selectedGameTypeIndex]; // Oyun tÃ¼rÃ¼nÃ¼ string olarak alÃ½yoruz
             if (selectedGameType != "None")
             {
-                EditorGUILayout.LabelField($"Oyun Türü: {selectedGameType}", EditorStyles.boldLabel);
-                createArtFolder = EditorGUILayout.Toggle("Art Klasörü", createArtFolder);
-                createCodeFolder = EditorGUILayout.Toggle("Code Klasörü", createCodeFolder);
-                createResourcesFolder = EditorGUILayout.Toggle("Resources Klasörü", createResourcesFolder);
-                createPrefabsFolder = EditorGUILayout.Toggle("Prefabs Klasörü", createPrefabsFolder);
-                createScenesFolder = EditorGUILayout.Toggle("Scenes Klasörü", createScenesFolder);
+                EditorGUILayout.LabelField($"Oyun TÃ¼rÃ¼: {selectedGameType}", EditorStyles.boldLabel);
+                createArtFolder = EditorGUILayout.Toggle("Art KlasÃ¶rÃ¼", createArtFolder);
+                createCodeFolder = EditorGUILayout.Toggle("Code KlasÃ¶rÃ¼", createCodeFolder);
+                createResourcesFolder = EditorGUILayout.Toggle("Resources KlasÃ¶rÃ¼", createResourcesFolder);
+                createPrefabsFolder = EditorGUILayout.Toggle("Prefabs KlasÃ¶rÃ¼", createPrefabsFolder);
+                createScenesFolder = EditorGUILayout.Toggle("Scenes KlasÃ¶rÃ¼", createScenesFolder);
             }
 
-            if (GUILayout.Button("Proje Dosyalarını Oluştur", GUILayout.ExpandHeight(true)))
+            if (GUILayout.Button("Proje DosyalarÃ½nÃ½ OluÃ¾tur", GUILayout.ExpandHeight(true)))
             {
                 CreateProjectFolders();
             }
@@ -79,7 +79,7 @@ namespace Araclar
         {
             if (string.IsNullOrEmpty(projectName))
             {
-                if (EditorUtility.DisplayDialog("Proje kurulum Uyarısı!", "Lütfen projenize bir isim verin", "Tamam"))
+                if (EditorUtility.DisplayDialog("Proje kurulum UyarÃ½sÃ½!", "LÃ¼tfen projenize bir isim verin", "Tamam"))
                 {
                     return;
                 }
@@ -97,7 +97,7 @@ namespace Araclar
 
             CreateSpecificFolders(rootPath);
 
-            AssetDatabase.Refresh(); // Unity'yi klasör değişikliklerinden haberdar et
+            AssetDatabase.Refresh(); // Unity'yi klasÃ¶r degisikliklerinden haberdar et
 
             CloseWindow(); // Pencereyi kapat
         }
@@ -106,7 +106,7 @@ namespace Araclar
         {
             List<string> folderNames = new List<string>();
 
-            // Seçilen oyun türüne göre klasörler oluşturulacak
+            // Secilen oyun tÃ¼rÃ¼ne gÃ¶re klasÃ¶rler olusturulacak
             if (createArtFolder)
             {
                 string artPath = Path.Combine(rootPath, "Art");
@@ -166,7 +166,7 @@ namespace Araclar
 
         void CreateScene(string aPath, string aName)
         {
-            Scene curScene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single); // Doğru metod burada kullanıldı
+            Scene curScene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
             EditorSceneManager.SaveScene(curScene, Path.Combine(aPath, aName + ".unity"), true); // Sahneyi kaydet
         }
 
